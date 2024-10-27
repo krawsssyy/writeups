@@ -1,1 +1,1 @@
-# Some of my writeups from different CTF
+Some of my writeups from different CTFs
