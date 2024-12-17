@@ -987,11 +987,9 @@ We are only given a Python file which seems to have generated a file with an enc
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 
-# Load the encrypted file
 with open('encrypted_message.aes', 'rb') as file:
     ciphertext = file.read()
 
-# Attempt decryption
 def decrypt_message(key, ciphertext):
     try:
         cipher = AES.new(key, AES.MODE_ECB)
@@ -1008,7 +1006,6 @@ def decrypt_message(key, ciphertext):
     except (ValueError, UnicodeDecodeError):
         return None
 
-# Run the brute-force
 with open("rockyou.txt", "r", encoding="latin-1") as f:
     data = f.readlines()
 data = [x.strip() for x in data]
