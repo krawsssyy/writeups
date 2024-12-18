@@ -1,0 +1,93 @@
+What is the name of the email client that Elfin is using?
+
+eM client - obtained from liveresponse/pwsh-get-processlist.csv
+
+Task 2
+
+What is the email the threat is using?
+
+definitelynotthegrinch@gmail.com - look into TriageData\C\users\Elfin\Appdata\Roaming\eM Client\Local Folders\mail-data.dat-wal, susp email
+
+Task 3
+
+When does the threat actor reach out to Elfin?
+
+2023-11-27 17:27:26 - look into TriageData\C\users\Elfin\Appdata\Roaming\eM Client\Local Folders\conversations.dat-wal, search by email, get date of first
+
+Task 4
+
+What is the name of Elfins boss?
+
+elfuttin bigelf  - look into TriageData\C\users\Elfin\Appdata\Roaming\eM Client\Local Folders\conversations.dat-wal
+
+Task 5
+
+What is the title of the email in which Elfin first mentions his access to Santas special files?
+
+re: work - look into TriageData\C\users\Elfin\Appdata\Roaming\eM Client\Local Folders\conversations.dat-wal, look into the chain of emails from the threat actor
+
+Task 6
+
+The threat actor changes their name, what is the new name + the date of the first email Elfin receives with it?
+
+wendy elflower, 2023-11-28 10:00:21 - look into TriageData\C\users\Elfin\Appdata\Roaming\eM Client\Local Folders\conversations.dat-wal, look into the chain of emails from the threat actor
+
+Task 7
+
+What is the name of the bar that Elfin offers to meet the threat actor at?
+
+SnowGlobe - look into TriageData\C\users\Elfin\Appdata\Roaming\eM Client\Local Folders\conversations.dat-wal, look into the chain of emails from the threat actor
+
+Task 8
+
+When does Elfin offer to send the secret files to the actor?
+
+2023-11-28 16:56:13 - look into TriageData\C\users\Elfin\Appdata\Roaming\eM Client\Local Folders\conversations.dat-wal, look into the chain of emails from the threat actor
+
+Task 9
+
+What is the search string for the first suspicious google search from Elfin? (Format: string)
+
+how to get around work security - load TriageData\C\users\Elfin\Appdata\Local\Google\Chrome\User Data\Default\History into a sqllite db viewer and look at cluster_keywords table data
+
+Task 10
+
+What is the name of the author who wrote the article from the CIA field manual?
+
+Joost Minnaar - load TriageData\C\users\Elfin\Appdata\Local\Google\Chrome\User Data\Default\History into a sqllite db viewer and look at urls table data
+
+Task 11
+
+What is the name of Santas secret file that Elfin sent to the actor?
+
+santa_deliveries.zip - look into TriageData\C\users\Elfin\Appdata\Roaming\eM Client\Local Folders\conversations.dat-wal, look into the chain of emails from the threat actor
+
+Task 12
+
+According to the filesystem, what is the exact CreationTime of the secret file on Elfins host?
+
+2023-11-28 17:01:29 - load TriageData\C\$MFT (master file table) into MFT Explorer from Zimmermans tools and look for the secret file, get creation date of zip
+
+Task 13
+
+What is the full directory name that Elfin stored the file in?
+
+C:\users\Elfin\Appdata\Roaming\top-secret - search in the root folder for santa_deliveries and you'll get the location, transpose it to elfin's machine
+
+Task 14
+
+Which country is Elfin trying to flee to after he exfiltrates the file?
+
+Greece - also obtained from chrome's cluster_keywords table data, think it can be obtained from the emails but didn't look
+
+Task 15
+
+What is the email address of the apology letter the user (elfin) wrote out but didn’t send?
+
+Santa.claus@gmail.com - in the same %APPDATA% folder for eM client, go to the weird guid-looking like folder (32969170-c98d-4a48-b444-526374e467e4), load up mail-data.dat-wml and look for sorry
+
+Task 16
+
+The head elf PixelPeppermint has requested any passwords of Elfins to assist in the investigation down the line. What’s the windows password of Elfin’s host?
+
+Santaknowskungfu - use mimikatz with the sam and security hives from TriageData\C\Windows\system32\config, get ntlm hash and use it on crackstation to get the password

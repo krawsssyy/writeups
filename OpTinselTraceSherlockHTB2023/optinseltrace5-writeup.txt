@@ -1,0 +1,53 @@
+Task 1
+
+Which CVE did the Threat Actor (TA) initially exploit to gain access to DC01?
+
+CVE-2020-1472 - Netlogon CVE; look trough system evtx(use evtxecmd) and see unusual services, try different cves until something sticks - found easier if searching for logons, it pops out there as it has a known privesc cve - also, there is a service started after exploitation named "vulnerable_to_zerologon" ...
+
+Task 2
+
+What time did the TA initially exploit the CVE? (UTC)
+
+2023-12-13 09:24:23 - get time of last request sent via netlogon
+
+Task 3
+
+What is the name of the executable related to the unusual service installed on the system around the time of the CVE exploitation?
+
+hAvbdksT.exe - filter in system evtx by the vulnerable_to_zerologon name and see when it is installed, and get the binary name
+
+Task 4
+
+What date & time was the unusual service start?
+
+2023-12-13 09:24:24 - same as for task 3, just that you look at when it starts
+
+Task 5
+
+What was the TA's IP address within our internal network?
+
+192.168.68.200 - obtained from security.evtx - noticed some ip used for bytesparkle, since it was used for initial access; then same ip used for admin logon
+
+Task 6
+
+Please list all user accounts the TA utilised during their access. (Ascending order)
+
+Administrator, bytesparkle - bytesparkle used for access via ssh (prev chall), administrator obtained after lpe
+
+Task 7
+
+What was the name of the scheduled task created by the TA?
+
+svc_vnc - obtained from kape uploads log file, seeing the tasks created and tried it
+
+Task 8
+
+Santa's memory is a little bad recently! He tends to write a lot of stuff down, but all our critical files have been encrypted! Which creature is Santa's new sleigh design planning to use?
+
+Unicorn - files are encrypted via XOR using the key EncryptingC4Fun! - decrypt the OperationStartLightJourney.pdf.xmax file using that and get the answer
+
+Task 9
+
+Please confirm the process ID of the process that encrypted our files.
+
+5828 - get date of accessing the splunk_svc from $MFT via MFTExplorer, then look through all the events logs and try PIDs (select event, go to details tab then xml view) based on the event's relevance and its date - eventually we'll end up in the UAC-FileVirtualization%254Operational, where we see some UAC events for deleting some png files and creating their variant .xmax (encrypted) - get the PID of that and voila
