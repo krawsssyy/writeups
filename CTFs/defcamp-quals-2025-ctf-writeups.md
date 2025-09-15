@@ -761,7 +761,7 @@ However, the marketplace allows only 1 item per seller, therefore we cannot use 
     }
 ```
 
-With this, we can drain all 10 items from the seller while the listing is still active. Putting this all together in a script, we get (gold was bought in chunks to avoid mishaps with the overflow).
+With this, we can drain all 10 items from the seller while the listing is still active. Putting this all together in a script, we get (gold was bought in chunks to avoid mishaps with the overflow) the flag.
 
 ```JS
 import { ethers } from "ethers";
@@ -943,7 +943,7 @@ Output:
 ```
 Local - Remote
 0.0.0.0:22 - 0.0.0.0:0
-10.36.9.117:22 - 86.121.182.213:61470
+10.36.9.117:22 - XX.XXX.XXX.XXX:XXXXX
 10.36.9.117:55870 - 64.226.90.121:5555
 10.36.9.117:58732 - 64.226.90.121:5555
 10.36.9.117:54324 - 64.226.90.121:5555
@@ -2242,5 +2242,6 @@ int main(int argc, char *argv[])
 }
 
 ```
+
 
 Flag: `DCTF{bc9bf6309190a168a97ec75876e7a092485553cde04f0ad129a62d2bbba9cc34}`
